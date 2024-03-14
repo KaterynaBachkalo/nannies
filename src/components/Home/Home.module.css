@@ -1,0 +1,137 @@
+/* .background {
+
+  background-image: url(../../img/image.png);
+  background-position: 50% 50%;
+  max-width: 1376px;
+  height: 90%;
+  min-width: 320px;
+  border-radius: 30px;
+  border: none;
+} */
+
+.maincontainer {
+  display: flex;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 1440px;
+
+  background: url(../../img/image.png) no-repeat;
+  background-size: 699px;
+  background-position: 677px 0;
+}
+
+.background {
+  background-color: var(--primary-color-blue);
+  margin: 32px;
+  border-radius: 30px;
+}
+
+.header {
+  height: 88px;
+  padding: 20px 128px;
+  border-bottom: var(--border-color-white);
+  margin: 0 auto;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--primary-color-white);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.17 px;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 92px;
+}
+
+.wrapLinks {
+  display: flex;
+  gap: 40px;
+}
+
+.home,
+.nannies {
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+}
+
+.wrapButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btnLogin {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+  background-color: transparent;
+  border: 1px solid var(--border-color-white);
+  width: 124px;
+  height: 48px;
+  padding: 14px 39px;
+  border-radius: 30px;
+}
+
+.btnRegistration {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+  background-color: var(--primary-color-blue);
+  border: none;
+  width: 168px;
+  height: 48px;
+  padding: 14px 40px;
+  border-radius: 30px;
+}
+.wrapTitles {
+  padding-top: 96px;
+  padding-right: 764px;
+  padding-bottom: 163px;
+
+  margin-left: 96px;
+}
+
+.title {
+  color: var(--secondary-color-white);
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+
+  padding-bottom: 28px;
+}
+
+.subtitle {
+  font-size: 28px;
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  color: var(--secondary-color-white);
+  padding-bottom: 64px;
+}
+
+.linkGet {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+
+  width: 231px;
+  height: 60px;
+  padding: 18px 50px;
+  border-radius: 30px;
+  border: 1px solid var(--border-color-white);
+}

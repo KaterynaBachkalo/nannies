@@ -1,0 +1,55 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.container {
+  height: 88px;
+  width: 1440px;
+  padding: 30px 128px;
+  margin: 0 auto;
+  border: 1px solid red;
+  background-color: var(--primary-color-blue);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--primary-color-white);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.17 px;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 92px;
+}
+
+.wrapLinks {
+  display: flex;
+  gap: 40px;
+}
+
+.home,
+.nannies,
+.favorites {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+}
+
+.wrapButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
