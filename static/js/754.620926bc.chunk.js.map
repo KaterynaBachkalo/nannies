@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/754.620926bc.chunk.js","mappings":"+IAEA,MAIA,EAJoBA,KACXC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,e","sources":["pages/NanniesPage/NanniesPage.tsx"],"sourcesContent":["import React from \"react\";\n\nconst NanniesPage = () => {\n  return <div>NanniesPage</div>;\n};\n\nexport default NanniesPage;\n"],"names":["NanniesPage","_jsx","children"],"sourceRoot":""}
