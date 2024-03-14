@@ -1,0 +1,89 @@
+@import-normalize; /* bring in normalize.css styles */
+
+:root {
+  --primary-color-white: rgb(251, 251, 251);
+  /* --primary-color-black: rgb(18, 20, 23); */
+  --primary-color-blue: #0957c3;
+  /* --primary-color-grey: rgb(138, 138, 137); */
+
+  /* --secondary-color-blue: rgb(11, 68, 205); */
+  /* --secondary-color-black: rgba(18, 20, 23, 0.5); */
+  --secondary-color-white: #fbfbfb;
+  /* --secondary-color-blue-shadow: rgba(52, 112, 255, 0.7); */
+
+  --border-color-white: #fbfbfb66;
+  /* --backdrop-color-white: rgba(255, 255, 255, 0.9); */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+::-webkit-scrollbar {
+  position: absolute;
+  background-color: transparent;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(18, 20, 23, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(18, 20, 23, 0.15);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.body-scroll-lock {
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: "Helvetica Neue";
+  display: block;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
