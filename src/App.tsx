@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/" element={<SharedLayout />}>
           <Route path="nannies" element={<NanniesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />

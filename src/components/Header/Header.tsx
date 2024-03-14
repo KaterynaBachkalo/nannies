@@ -23,7 +23,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/nannies" className={css.favorites}>
+                <Link to="/favorites" className={css.favorites}>
                   Favorites
                 </Link>
               </li>
@@ -33,7 +33,9 @@ const Header = () => {
                 <p>User</p>
               </li>
               <li>
-                <button type="button">Log out</button>
+                <button type="button" className={css.btnLogout}>
+                  Log out
+                </button>
               </li>
             </div>
           </ul>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaArrowUp } from "react-icons/fa6";
+import { ReactComponent as IconCheck } from "../../img/check.svg";
 import css from "./Home.module.css";
 
 const Home = () => {
@@ -46,7 +48,18 @@ const Home = () => {
           </p>
           <Link to="/nannies" className={css.linkGet}>
             Get started
+            <FaArrowUp className={css.arrow} />
           </Link>
+        </div>
+
+        <div className={css.block}>
+          <div className={css.sign}>
+            <IconCheck className={css.check} />
+          </div>
+          <div>
+            <p className={css.blockTitle}>Experienced nannies</p>
+            <p className={css.blockText}>15,000</p>
+          </div>
         </div>
       </div>
     </div>

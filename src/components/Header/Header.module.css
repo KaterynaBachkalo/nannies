@@ -2,15 +2,15 @@
   position: fixed;
   width: 100%;
   z-index: 100;
+  background-color: var(--primary-color-blue);
 }
 
 .container {
   height: 88px;
   width: 1440px;
-  padding: 30px 128px;
+  padding: 20px 128px;
   margin: 0 auto;
   border: 1px solid red;
-  background-color: var(--primary-color-blue);
 }
 
 .navigation {
@@ -52,4 +52,22 @@
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+.btnLogout {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+  background-color: transparent;
+  border: 1px solid var(--border-color-white);
+  width: 134px;
+  height: 48px;
+  border-radius: 30px;
+  transition: background-color border 0.3s easy;
+}
+
+.btnLogout:hover {
+  background-color: var(--secondary-color-white);
+  color: var(--primary-color-blue);
 }
