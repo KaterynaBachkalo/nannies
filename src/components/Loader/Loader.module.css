@@ -1,0 +1,19 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+
+  background-color: var(--secondary-color-black);
+  z-index: 200;
+}
+
+.spinnerWrapper {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+}
