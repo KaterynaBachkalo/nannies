@@ -12,7 +12,7 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement as HTMLElement);
 
 root.render(
-  <StrictMode>
+  <>
     {/* <Provider store={store}> */}
     {/* <PersistGate persistor={persistor}> */}
     <BrowserRouter basename="/nanny-services">
@@ -21,5 +21,5 @@ root.render(
     </BrowserRouter>
     {/* </PersistGate> */}
     {/* </Provider> */}
-  </StrictMode>
+  </>
 );
