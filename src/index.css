@@ -1,18 +1,17 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+/* bring in normalize.css styles */
 
 :root {
   --primary-color-white: rgb(251, 251, 251);
-  /* --primary-color-black: rgb(18, 20, 23); */
+  --primary-color-black: #11101C;
   --primary-color-blue: #0957c3;
-  /* --primary-color-grey: rgb(138, 138, 137); */
 
-  /* --secondary-color-blue: rgb(11, 68, 205); */
-  /* --secondary-color-black: rgba(18, 20, 23, 0.5); */
   --secondary-color-white: #fbfbfb;
-  /* --secondary-color-blue-shadow: rgba(52, 112, 255, 0.7); */
+  --secondary-color-black: #11101C80;
+  /* --secondary-color-blue: rgb(11, 68, 205); */
 
   --border-color-white: #fbfbfb66;
-  /* --backdrop-color-white: rgba(255, 255, 255, 0.9); */
+  --backdrop-color-black: #0B0B0B99;
 }
 
 * {

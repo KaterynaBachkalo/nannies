@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 
@@ -9,9 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 export const SharedLayout = () => {
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
+
   return (
     <div className="container">
-      <Header />
+      {!isHome && <Header />}
       <ScrollToTopButton />
       <ToastContainer
         position="top-right"

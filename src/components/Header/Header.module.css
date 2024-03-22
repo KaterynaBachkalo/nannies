@@ -27,28 +27,42 @@
   letter-spacing: -0.02em;
 }
 
+.wraplist {
+  display: flex;
+  gap: 92px;
+}
+
 .list {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 92px;
-}
 
-.wrapLinks {
-  display: flex;
   gap: 40px;
 }
 
-.home,
-.nannies,
-.favorites {
+
+.link {
+  position: relative;
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--secondary-color-white);
 }
 
-.wrapButtons {
+.link[aria-current="page"]::after {
+  position: absolute;
+  background-color: var(--primary-color-white);
+  border-radius: 50%;
+  content: "";
+  height: 8px;
+  width: 8px;
+  left: 50%;
+  bottom: -16px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.wrapButtonsLogout {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -70,4 +84,52 @@
 .btnLogout:hover {
   background-color: var(--secondary-color-white);
   color: var(--primary-color-blue);
+}
+
+.wrapButtonsLogin {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.wrapButtonsLogin li {
+  list-style-type: none;
+}
+
+.btnLogin {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+  background-color: transparent;
+  border: 1px solid var(--border-color-white);
+  width: 124px;
+  height: 48px;
+  padding: 14px 39px;
+  border-radius: 30px;
+  transition: background-color border 0.3s easy;
+}
+
+.btnLogin:hover {
+  background-color: var(--primary-color-blue);
+  border: transparent;
+}
+
+.btnRegistration {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--secondary-color-white);
+  background-color: var(--primary-color-blue);
+  border: none;
+  width: 168px;
+  height: 48px;
+  padding: 14px 40px;
+  border-radius: 30px;
+  transition: color background-color 0.3 easy;
+}
+
+.btnRegistration:hover {
+  color: var(--primary-color-blue);
+  background-color: var(--secondary-color-white);
 }
