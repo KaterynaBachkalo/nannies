@@ -1,0 +1,42 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+
+    background-color: var(--backdrop-color-black);
+    z-index: 200;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    max-height: calc(100vh - 20px);
+    max-width: 566px;
+}
+
+.modal {
+    position: relative;
+    padding: 64px;
+    border-radius: 30px;
+
+    background: var(--secondary-color-white);
+    z-index: 300;
+    width: 566px;
+}
+
+.btnClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

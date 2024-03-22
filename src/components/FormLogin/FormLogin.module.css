@@ -1,0 +1,62 @@
+.inputWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-bottom: 40px;
+}
+
+.wrap {
+    position: relative;
+}
+
+.input {
+    border: 1px solid #11101C1A;
+    border-radius: 12px;
+    width: 100%;
+    height: 52px;
+    padding: 16px 18px;
+    background-color: var(--secondary-color-white);
+}
+
+.input::placeholder {
+    line-height: 1.2;
+    color: var(--primary-color-black);
+}
+
+.errormessage {
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    color: red;
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+
+    background: var(--primary-color-blue);
+    color: var(--secondary-color-white);
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    padding: 16px 50px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    color: var(--primary-color-blue);
+    background-color: var(--secondary-color-white);
+}
+
+.iconeye {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    cursor: pointer;
+}
