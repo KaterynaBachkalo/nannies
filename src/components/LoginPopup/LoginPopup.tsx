@@ -20,7 +20,7 @@ const LoginPopup: FC<IProps> = ({ onClose }) => {
           continue your babysitter search.
         </p>
       </div>
-      <FormLogin />
+      <FormLogin onClose={onClose} />
     </div>
   );
 };

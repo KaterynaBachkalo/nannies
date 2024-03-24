@@ -17,7 +17,7 @@ const RegistrationPopup: FC<IProps> = ({ onClose }) => {
           information.
         </p>
       </div>
-      <FormRegistration />
+      <FormRegistration onClose={onClose} />
     </div>
   );
 };
