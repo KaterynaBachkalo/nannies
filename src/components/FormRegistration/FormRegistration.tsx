@@ -7,10 +7,7 @@ import css from "./FormRegistration.module.css";
 import { ReactComponent as OpenEyeIcon } from "../../img/openeye.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../img/closeeye.svg";
 import { auth } from "../../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 interface IForms {
   name: string;
