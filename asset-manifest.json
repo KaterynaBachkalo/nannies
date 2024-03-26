@@ -1,29 +1,35 @@
 {
   "files": {
-    "main.css": "/nanny-services/static/css/main.a556aa10.css",
-    "main.js": "/nanny-services/static/js/main.721c2f49.js",
+    "main.css": "/nanny-services/static/css/main.ee6a2242.css",
+    "main.js": "/nanny-services/static/js/main.8964df3a.js",
     "static/css/62.b948ee0a.chunk.css": "/nanny-services/static/css/62.b948ee0a.chunk.css",
-    "static/js/62.e15e5999.chunk.js": "/nanny-services/static/js/62.e15e5999.chunk.js",
-    "static/js/829.eacd1e75.chunk.js": "/nanny-services/static/js/829.eacd1e75.chunk.js",
-    "static/js/582.5d90af5e.chunk.js": "/nanny-services/static/js/582.5d90af5e.chunk.js",
-    "static/js/184.368b5612.chunk.js": "/nanny-services/static/js/184.368b5612.chunk.js",
+    "static/js/62.f7d8bb64.chunk.js": "/nanny-services/static/js/62.f7d8bb64.chunk.js",
+    "static/css/921.616cc9d0.chunk.css": "/nanny-services/static/css/921.616cc9d0.chunk.css",
+    "static/js/921.69553bef.chunk.js": "/nanny-services/static/js/921.69553bef.chunk.js",
+    "static/js/582.1ba49547.chunk.js": "/nanny-services/static/js/582.1ba49547.chunk.js",
+    "static/js/184.e79b6191.chunk.js": "/nanny-services/static/js/184.e79b6191.chunk.js",
     "static/media/image.png": "/nanny-services/static/media/image.6f7e253e05599dca9b1a.png",
+    "static/media/star.svg": "/nanny-services/static/media/star.cca4ac1ee605759018574c40aab68b04.svg",
+    "static/media/fill_heart.svg": "/nanny-services/static/media/fill_heart.cfc41ce82f0890fab60b126c3b27a3b5.svg",
     "static/media/closeeye.svg": "/nanny-services/static/media/closeeye.ed8221d9e58d35e1873bf32bafb5fad2.svg",
     "index.html": "/nanny-services/index.html",
+    "static/media/heart.svg": "/nanny-services/static/media/heart.e67f4629c99dc1851fc4f4f845e99ca2.svg",
+    "static/media/map.svg": "/nanny-services/static/media/map.08df1d9a1e70b8173186ceb7f798c29a.svg",
     "static/media/openeye.svg": "/nanny-services/static/media/openeye.46ff42a5ff3c1562b3b51bbfe3903611.svg",
     "static/media/close.svg": "/nanny-services/static/media/close.9a8400730666f2603c1ee143fc586f33.svg",
     "static/media/arrowup.svg": "/nanny-services/static/media/arrowup.f7f0c8638304ccc50da07f9015e3790e.svg",
     "static/media/check.svg": "/nanny-services/static/media/check.bcfab1f07d1f418611a80ccdd4978246.svg",
-    "main.a556aa10.css.map": "/nanny-services/static/css/main.a556aa10.css.map",
-    "main.721c2f49.js.map": "/nanny-services/static/js/main.721c2f49.js.map",
+    "main.ee6a2242.css.map": "/nanny-services/static/css/main.ee6a2242.css.map",
+    "main.8964df3a.js.map": "/nanny-services/static/js/main.8964df3a.js.map",
     "62.b948ee0a.chunk.css.map": "/nanny-services/static/css/62.b948ee0a.chunk.css.map",
-    "62.e15e5999.chunk.js.map": "/nanny-services/static/js/62.e15e5999.chunk.js.map",
-    "829.eacd1e75.chunk.js.map": "/nanny-services/static/js/829.eacd1e75.chunk.js.map",
-    "582.5d90af5e.chunk.js.map": "/nanny-services/static/js/582.5d90af5e.chunk.js.map",
-    "184.368b5612.chunk.js.map": "/nanny-services/static/js/184.368b5612.chunk.js.map"
+    "62.f7d8bb64.chunk.js.map": "/nanny-services/static/js/62.f7d8bb64.chunk.js.map",
+    "921.616cc9d0.chunk.css.map": "/nanny-services/static/css/921.616cc9d0.chunk.css.map",
+    "921.69553bef.chunk.js.map": "/nanny-services/static/js/921.69553bef.chunk.js.map",
+    "582.1ba49547.chunk.js.map": "/nanny-services/static/js/582.1ba49547.chunk.js.map",
+    "184.e79b6191.chunk.js.map": "/nanny-services/static/js/184.e79b6191.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a556aa10.css",
-    "static/js/main.721c2f49.js"
+    "static/css/main.ee6a2242.css",
+    "static/js/main.8964df3a.js"
   ]
 }
