@@ -71,7 +71,7 @@ const Header = () => {
                   </button>
                 </li>
                 {isOpenLoginPopup && (
-                  <Modal onClose={closeModal}>
+                  <Modal onClose={closeModal} title="Log In">
                     <LoginPopup onClose={closeModal} />
                   </Modal>
                 )}
@@ -85,7 +85,7 @@ const Header = () => {
                   </button>
                 </li>
                 {isOpenRegistrationPopup && (
-                  <Modal onClose={closeModal}>
+                  <Modal onClose={closeModal} title="Registration">
                     <RegistrationPopup onClose={closeModal} />
                   </Modal>
                 )}

@@ -14,7 +14,6 @@ const LoginPopup: FC<IProps> = ({ onClose }) => {
   return (
     <div>
       <div>
-        <p className={css.title}>Log In</p>
         <p className={css.subtitle}>
           Welcome back! Please enter your credentials to access your account and
           continue your babysitter search.

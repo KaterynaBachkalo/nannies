@@ -10,7 +10,6 @@ const RegistrationPopup: FC<IProps> = ({ onClose }) => {
   return (
     <div>
       <div>
-        <p className={css.title}>Registration</p>
         <p className={css.subtitle}>
           Thank you for your interest in our platform! In order to register, we
           need some information. Please provide us with the following

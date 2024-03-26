@@ -58,7 +58,7 @@ const Home = () => {
                   </button>
                 </li>
                 {isOpenLoginPopup && (
-                  <Modal onClose={closeModal}>
+                  <Modal onClose={closeModal} title="Log In">
                     <LoginPopup onClose={closeModal} />
                   </Modal>
                 )}
@@ -72,7 +72,7 @@ const Home = () => {
                   </button>
                 </li>
                 {isOpenRegistrationPopup && (
-                  <Modal onClose={closeModal}>
+                  <Modal onClose={closeModal} title="Registration">
                     <RegistrationPopup onClose={closeModal} />
                   </Modal>
                 )}

@@ -18,7 +18,6 @@ const AppointmentPopup: FC<IProps> = ({ onClose, nanny }) => {
   return (
     <div>
       <div>
-        <p className={css.title}>Make an appointment with a babysitter</p>
         <p className={css.subtitle}>
           Arranging a meeting with a caregiver for your child is the first step
           to creating a safe and comfortable environment. Fill out the form
@@ -27,8 +26,10 @@ const AppointmentPopup: FC<IProps> = ({ onClose, nanny }) => {
       </div>
       <div className={css.wrapAvatar}>
         <img src={avatar_url} alt="avatar" className={css.avatar} />
-        <p>Your nanny</p>
-        <p>{name}</p>
+        <div>
+          <p className={css.position}>Your nanny</p>
+          <p className={css.name}>{name}</p>
+        </div>
       </div>
       <FormAppointment onClose={onClose} />
     </div>

@@ -9,9 +9,10 @@ const modalRoot: Element | null = document.querySelector("#root-modal");
 interface IProps {
   onClose: (value: boolean) => void;
   children: ReactNode;
+  title: string;
 }
 
-const RegistrationPopup: FC<IProps> = ({ onClose, children }) => {
+const Modal: FC<IProps> = ({ onClose, children, title }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   useCloseModals(onClose, modalRef);
 
@@ -21,13 +22,18 @@ const RegistrationPopup: FC<IProps> = ({ onClose, children }) => {
       <div className={css.backdrop}>
         <div className={css.container}>
           <div
-            className={css.modal}
+            className={`${css.modal} ${
+              title === "Make an appointment with a babysitter"
+                ? css.modalBig
+                : css.modal
+            }`}
             ref={modalRef}
             onClick={(event) => event.stopPropagation()}
           >
             <button className={css.btnClose} onClick={() => onClose(false)}>
-              <img src={closeIcon} width={24} alt="Close" />
+              <img src={closeIcon} width={32} alt="Close" />
             </button>
+            <div className={css.title}>{title}</div>
             <div>{children}</div>
           </div>
         </div>
@@ -38,4 +44,4 @@ const RegistrationPopup: FC<IProps> = ({ onClose, children }) => {
   );
 };
 
-export default RegistrationPopup;
+export default Modal;

@@ -150,7 +150,10 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
                 Make an appointment
               </button>
               {isOpenPopUp && (
-                <Modal onClose={closeModal}>
+                <Modal
+                  onClose={closeModal}
+                  title="Make an appointment with a babysitter"
+                >
                   <AppointmentPopup onClose={closeModal} nanny={nanny} />
                 </Modal>
               )}
