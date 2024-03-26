@@ -1,13 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchNanniesThunk } from "./operations";
 import { toast } from "react-toastify";
+import { INanny } from "../types";
 
-const handlePending = (state) => {
+interface IState {
+  items: INanny[];
+  isLoading: boolean;
+  error: string | null;
+  favorites: string[];
+  loadMoreButton: boolean;
+  currentPage: number;
+}
+
+const handlePending = (state: IState): void => {
   state.isLoading = true;
   state.error = null;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state: IState, action: PayloadAction<any>): void => {
   state.isLoading = false;
   state.error = action.payload;
 
@@ -25,7 +35,7 @@ const handleRejected = (state, action) => {
   }
 };
 
-const INITIAL_STATE = {
+const INITIAL_STATE: IState = {
   items: [],
   isLoading: false,
   error: null,
@@ -39,37 +49,25 @@ const nanniesSlice = createSlice({
   initialState: INITIAL_STATE,
 
   reducers: {
-    addToFavorites: {
-      reducer(state, action) {
-        state.favorites.push(action.payload);
-      },
+    addToFavorites(state, action: PayloadAction<string>) {
+      state.favorites.push(action.payload);
     },
-    deleteFavorites: {
-      reducer(state, action) {
-        state.favorites = state.favorites.filter(
-          (favorite) => favorite !== action.payload
-        );
-      },
+    deleteFavorites(state, action: PayloadAction<string>) {
+      state.favorites = state.favorites.filter(
+        (favorite) => favorite !== action.payload
+      );
     },
-    clearState: {
-      reducer(state) {
-        state.items = [];
-      },
+    clearState(state) {
+      state.items = [];
     },
-    setloadMoreButton: {
-      reducer(state, action) {
-        state.loadMoreButton = action.payload;
-      },
+    setloadMoreButton(state, action: PayloadAction<boolean>) {
+      state.loadMoreButton = action.payload;
     },
-    setCurrentPage: {
-      reducer(state, action) {
-        state.currentPage = action.payload;
-      },
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
     },
-    setNextPage: {
-      reducer(state, action) {
-        state.currentPage = state.currentPage + 1;
-      },
+    setNextPage(state) {
+      state.currentPage = state.currentPage + 1;
     },
   },
   extraReducers: (builder) => {

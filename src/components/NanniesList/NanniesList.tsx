@@ -1,23 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NanniesCard from "../NanniesCard/NanniesCard";
-import { useSelector } from "react-redux";
-import { selectNannies } from "../../redux/selectors";
-import { getDatabase } from "firebase/database";
-import { app } from "../../firebase";
+import { ref, onValue } from "firebase/database";
+import { db } from "../../firebase";
+import { INanny } from "../../types";
+import css from "./NanniesList.module.css";
 
 const NanniesList = () => {
-  const nannies = useSelector(selectNannies);
-  console.log(nannies);
+  const [nannies, setNannies] = useState([]);
 
   useEffect(() => {
-    const db = getDatabase(app);
+    const unsubscribe = onValue(ref(db), (snapshot) => {
+      const data = snapshot.val();
 
-    console.log(db);
+      if (data) {
+        setNannies(data);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
+
   return (
-    <>
-      <NanniesCard />
-    </>
+    <div className={css.back}>
+      <div className={css.container}>
+        <div className={css.list}>
+          {nannies.length !== 0 &&
+            nannies.map((nanny: INanny) => (
+              <NanniesCard key={nanny.name} nanny={nanny} />
+            ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

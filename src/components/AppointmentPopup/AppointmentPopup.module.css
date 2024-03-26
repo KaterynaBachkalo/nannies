@@ -1,0 +1,25 @@
+.title {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  padding-bottom: 20px;
+}
+
+.subtitle {
+  line-height: 1.2;
+  color: var(--secondary-color-black);
+  padding-bottom: 40px;
+}
+
+.wrapAvatar {
+  display: flex;
+}
+
+.avatar {
+  width: 44px;
+  border-radius: 15px;
+
+  background: rgb(224, 224, 224);
+}

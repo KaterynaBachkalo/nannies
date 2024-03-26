@@ -3,15 +3,15 @@
 
 :root {
   --primary-color-white: rgb(251, 251, 251);
-  --primary-color-black: #11101C;
-  --primary-color-blue: #0957c3;
+  --primary-color-black: rgb(17, 16, 28);
+  --primary-color-blue: rgb(9, 87, 195);
+  --primary-color-grey: rgb(138, 138, 137);
 
   --secondary-color-white: #fbfbfb;
-  --secondary-color-black: #11101C80;
-  /* --secondary-color-blue: rgb(11, 68, 205); */
+  --secondary-color-black: #11101c80;
 
   --border-color-white: #fbfbfb66;
-  --backdrop-color-black: #0B0B0B99;
+  --backdrop-color-black: #0b0b0b99;
 }
 
 * {

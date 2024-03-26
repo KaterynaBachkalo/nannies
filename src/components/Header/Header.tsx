@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 import Modal from "../Modal/Modal";
@@ -10,13 +10,11 @@ const Header = () => {
   const [isOpenLoginPopup, setOpenLoginPopup] = useState(false);
   const [isOpenRegistrationPopup, setOpenRegistrationPopup] = useState(false);
 
-  const handleOpenLoginPopup = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleOpenLoginPopup = () => {
     setOpenLoginPopup(true);
   };
 
-  const handleOpenRegistrationPopup = (
-    event: MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleOpenRegistrationPopup = () => {
     setOpenRegistrationPopup(true);
   };
 
