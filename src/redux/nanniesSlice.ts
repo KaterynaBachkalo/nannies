@@ -5,9 +5,8 @@ import { INanny } from "../types";
 interface IState {
   items: INanny[];
   isLoading: boolean;
-  error: string | null;
+  error: any | null;
   favorites: string[];
-  loadMoreButton: boolean;
   currentPage: number;
 }
 
@@ -18,7 +17,7 @@ export const handlePending = (state: IState): void => {
 
 export const handleRejected = (
   state: IState,
-  action: PayloadAction<string>
+  action: PayloadAction<any>
 ): void => {
   state.isLoading = false;
   state.error = action.payload;
@@ -42,7 +41,6 @@ export const INITIAL_STATE: IState = {
   isLoading: false,
   error: null,
   favorites: [],
-  loadMoreButton: true,
   currentPage: 1,
 };
 
@@ -59,14 +57,8 @@ const nanniesSlice = createSlice({
         (favorite) => favorite !== action.payload
       );
     },
-    setFavorites(state, action: PayloadAction<string[]>) {
-      state.favorites = action.payload;
-    },
     clearState(state) {
       state.items = [];
-    },
-    setloadMoreButton(state, action: PayloadAction<boolean>) {
-      state.loadMoreButton = action.payload;
     },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
@@ -79,6 +71,12 @@ const nanniesSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    setLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
+    },
+    setError(state, action: PayloadAction<any | null>) {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -86,10 +84,10 @@ export const {
   addToFavorites,
   deleteFavorites,
   clearState,
-  setloadMoreButton,
   setCurrentPage,
-  setNextPage,
   setNannies,
-  setFavorites,
+  setLoading,
+  setError,
+  setNextPage,
 } = nanniesSlice.actions;
 export const nanniesReducer = nanniesSlice.reducer;

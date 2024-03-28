@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NanniesCard from "../NanniesCard/NanniesCard";
 import { ref, onValue } from "firebase/database";
 import { db } from "../../firebase";
@@ -6,35 +6,75 @@ import { INanny } from "../../types";
 import css from "./NanniesList.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectNannies } from "../../redux/selectors";
-import { setNannies } from "../../redux/nanniesSlice";
+import { selectCurrentPage, selectIsLoading } from "../../redux/selectors";
+import {
+  setCurrentPage,
+  setError,
+  setLoading,
+  setNannies,
+  setNextPage,
+} from "../../redux/nanniesSlice";
+import Loader from "../Loader/Loader";
 
 const NanniesList = () => {
-  const nannies = useSelector(selectNannies);
+  const isLoading = useSelector(selectIsLoading);
+
+  const [loadedNannies, setLoadedNannies] = useState<INanny[]>([]);
+  const [visibleNannies, setVisibleNannies] = useState<INanny[]>([]);
+
+  const nanniesPerPage = 3;
+  const currentPage = useSelector(selectCurrentPage);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onValue(ref(db), (snapshot) => {
-      const data = snapshot.val();
+    try {
+      dispatch(setLoading(true));
+      dispatch(setError(null));
 
-      if (data) {
-        dispatch(setNannies(data));
-      }
-    });
-    return () => unsubscribe();
+      const unsubscribe = onValue(ref(db), (snapshot) => {
+        const data = snapshot.val();
+
+        if (data) {
+          dispatch(setNannies(data));
+          setLoadedNannies(data);
+          setVisibleNannies(data.slice(0, nanniesPerPage));
+        }
+      });
+      return () => unsubscribe();
+    } catch (error) {
+      dispatch(setLoading(false));
+      dispatch(setError(error));
+    }
   }, [dispatch]);
+
+  const handleLoadMore = () => {
+    dispatch(setNextPage());
+    const nextPage = currentPage + 1;
+    const startIndex = nextPage * nanniesPerPage;
+    const endIndex = startIndex + nanniesPerPage;
+    const newVisibleNannies = loadedNannies.slice(startIndex, endIndex);
+    setVisibleNannies([...visibleNannies, ...newVisibleNannies]);
+    setCurrentPage(nextPage);
+  };
 
   return (
     <div className={css.back}>
       <div className={css.container}>
         <div className={css.list}>
-          {nannies &&
-            nannies.map((nanny: INanny) => (
-              <NanniesCard key={nanny.name} nanny={nanny} />
-            ))}
+          {visibleNannies?.map((nanny: INanny) => (
+            <NanniesCard key={nanny.name} nanny={nanny} />
+          ))}
         </div>
+        {loadedNannies.length > visibleNannies.length && (
+          <div className={css.btnWrap}>
+            <button onClick={handleLoadMore} className={css.btnLoadMore}>
+              Load more
+            </button>
+          </div>
+        )}
       </div>
+      {isLoading && !visibleNannies && <Loader />}
     </div>
   );
 };

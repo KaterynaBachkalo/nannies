@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
 import Modal from "../Modal/Modal";
 import LoginPopup from "../LoginPopup/LoginPopup";

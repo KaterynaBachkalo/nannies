@@ -193,4 +193,10 @@
   color: var(--primary-color-white);
   font-weight: 500;
   margin-bottom: 24px;
+  transition: all 0.3 ease;
+}
+
+.btnMake:hover {
+  background: var(--primary-color-white);
+  color: var(--primary-color-blue);
 }

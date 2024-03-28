@@ -16,3 +16,26 @@
   align-items: center;
   gap: 32px;
 }
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLoadMore {
+  border-radius: 30px;
+
+  background: var(--primary-color-blue);
+  padding: 14px 28px;
+  color: var(--primary-color-white);
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: all 0.3 ease;
+  margin-top: 24px;
+}
+
+.btnLoadMore:hover {
+  background: var(--primary-color-white);
+  color: var(--primary-color-blue);
+}

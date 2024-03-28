@@ -60,13 +60,15 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
         })
       );
       navigate("/nannies");
-    } catch (error) {
-      console.error(error);
+      toast.success(`Success registration`);
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("Email already in use");
+      } else {
+        console.error(error);
+      }
     }
-
     resetForm();
-
-    toast.success(`Success registration`);
 
     onClose(true);
   };
