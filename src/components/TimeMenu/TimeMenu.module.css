@@ -1,0 +1,39 @@
+.dropDown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 151px;
+  height: 180px;
+  padding: 16px;
+  overflow-y: scroll;
+
+  border-radius: 12px;
+  box-shadow: 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
+  background: rgb(255, 255, 255);
+  z-index: 400;
+}
+
+.timeTitle {
+  color: var(--primary-color-black);
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.timeList {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.timeItem {
+  color: rgba(17, 16, 28, 0.3);
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.timeItem:hover {
+  color: var(--primary-color-black);
+}

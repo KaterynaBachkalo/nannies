@@ -16,7 +16,7 @@ const AppointmentPopup: FC<IProps> = ({ onClose, nanny }) => {
   useCloseModals(onClose, modalRef);
 
   return (
-    <div>
+    <div ref={modalRef}>
       <div>
         <p className={css.subtitle}>
           Arranging a meeting with a caregiver for your child is the first step

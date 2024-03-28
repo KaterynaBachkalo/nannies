@@ -25,7 +25,7 @@
 }
 
 .number {
-  padding: 16px 18px 16px 60px;
+  padding: 16px 18px 16px 55px;
 }
 
 .inputShort::placeholder {
@@ -36,7 +36,7 @@
   color: var(--primary-color-black);
   position: absolute;
   left: 18px;
-  top: 17px;
+  top: 16px;
 }
 
 .wrapInput {
@@ -69,7 +69,7 @@
 }
 
 .textarea {
-  max-width: 100%;
+  width: 100%;
   min-height: 116px;
 
   border: 1px solid rgba(17, 16, 28, 0.1);
@@ -84,6 +84,7 @@
 
   padding: 16px 18px;
   margin-bottom: 40px;
+  resize: none;
 }
 
 .errormessage {

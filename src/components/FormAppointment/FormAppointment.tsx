@@ -1,6 +1,7 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
-import React, { FC } from "react";
+import React, { FC, useRef, useState } from "react";
 import { ReactComponent as Icontime } from "../../img/time.svg";
+import TimeMenu from "../TimeMenu/TimeMenu";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import css from "./FormAppointment.module.css";
@@ -20,14 +21,24 @@ interface IProps {
 }
 
 const FormAppointment: FC<IProps> = ({ onClose }) => {
+  const timeRef = useRef(null);
+
+  const [time, setTime] = useState("00:00");
+
+  const [isOpenTimeMenu, setOpenTimeMenu] = useState(false);
+
+  const phoneRegExp = /^\d{9}$/;
+
   const validationSchema = Yup.object({
     address: Yup.string().required(`Enter address, please`),
-    number: Yup.number().required(`Enter phone number, please`),
+    number: Yup.string()
+      .required(`Enter phone number, please`)
+      .matches(phoneRegExp, "Phone number is not valid"),
     age: Yup.number()
       .required(`Enter age, please`)
       .min(1, `Min 1 characters`)
       .max(2, `Max 2 characters`),
-    time: Yup.string().required(`Check time, please`),
+    time: Yup.string(),
     email: Yup.string().email("Invalid email").required(`Enter email, please`),
     name: Yup.string(),
     comment: Yup.string(),
@@ -43,9 +54,23 @@ const FormAppointment: FC<IProps> = ({ onClose }) => {
     comment: "",
   };
 
-  const onSubmit = async (values: any, { resetForm }: any) => {
-    toast.success(``);
+  const onSubmit = async (values: any, { setFieldError }: any) => {
+    values.time = time;
+
+    if (values.time === "00:00") {
+      setFieldError("time", "Invalid time selected");
+      return;
+    }
+
+    toast.success(
+      `The form for appoinment with the nanny has been successfully sent`
+    );
     onClose(true);
+  };
+
+  const handleSelectTimeMenu = (selected: string) => {
+    setTime(selected);
+    setOpenTimeMenu(false);
   };
 
   return (
@@ -76,7 +101,7 @@ const FormAppointment: FC<IProps> = ({ onClose }) => {
                 +380
               </label>
               <Field
-                type="number"
+                type="tel"
                 name="number"
                 className={`${css.inputShort} ${css.number}`}
               />
@@ -102,18 +127,26 @@ const FormAppointment: FC<IProps> = ({ onClose }) => {
             </div>
 
             <div className={css.wrap}>
-              <Field
-                type="text"
-                name="time"
-                placeholder="Meeting time"
-                className={css.inputShort}
+              <Field name="time" className={css.inputShort} value={time} />
+
+              <Icontime
+                className={css.time}
+                onClick={() => setOpenTimeMenu(!isOpenTimeMenu)}
+                ref={timeRef}
               />
-              <Icontime className={css.time} />
+              {isOpenTimeMenu && (
+                <TimeMenu
+                  onSelect={handleSelectTimeMenu}
+                  onClose={setOpenTimeMenu}
+                  ref={timeRef}
+                />
+              )}
+
               <ErrorMessage
                 name="time"
                 component="div"
                 className={css.errormessage}
-              />
+              ></ErrorMessage>
             </div>
           </div>
 

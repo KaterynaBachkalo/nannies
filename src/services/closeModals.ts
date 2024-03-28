@@ -2,7 +2,11 @@ import { useEffect, RefObject } from "react";
 
 type CloseFunction = (value: boolean) => void;
 
-const useCloseModals = (func: CloseFunction, myRef: RefObject<HTMLElement>) => {
+const useCloseModals = (
+  func: CloseFunction,
+  myRef: RefObject<HTMLElement>,
+  ref?: RefObject<HTMLElement>
+) => {
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.code === "Escape") {
@@ -11,7 +15,12 @@ const useCloseModals = (func: CloseFunction, myRef: RefObject<HTMLElement>) => {
     };
 
     const handleClose = (event: MouseEvent) => {
-      if (myRef.current && !myRef.current.contains(event.target as Node)) {
+      if (
+        myRef.current &&
+        !myRef.current.contains(event.target as Node) &&
+        ref?.current &&
+        !ref?.current.contains(event.target as Node)
+      ) {
         func(false);
       }
     };
@@ -24,7 +33,7 @@ const useCloseModals = (func: CloseFunction, myRef: RefObject<HTMLElement>) => {
       document.removeEventListener("mousedown", handleClose);
       document.body.classList.remove("body-scroll-lock");
     };
-  }, [func, myRef]);
+  }, [func, myRef, ref]);
 };
 
 export default useCloseModals;

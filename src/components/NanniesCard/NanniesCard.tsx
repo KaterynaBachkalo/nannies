@@ -122,7 +122,7 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
             <>
               <ul className={css.reviewContent}>
                 {reviews.map((rev) => (
-                  <li className={css.reviewItem}>
+                  <li className={css.reviewItem} key={rev.reviewer}>
                     <div className={css.reviews}>
                       <div className={css.noAvatar}>
                         <span className={css.letter}>
