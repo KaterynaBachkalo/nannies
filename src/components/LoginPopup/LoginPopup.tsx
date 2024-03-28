@@ -1,6 +1,5 @@
-import React, { FC, useRef } from "react";
+import React, { FC } from "react";
 import css from "./LoginPopup.module.css";
-import useCloseModals from "../../services/closeModals";
 import FormLogin from "../FormLogin/FormLogin";
 
 interface IProps {
@@ -8,9 +7,6 @@ interface IProps {
 }
 
 const LoginPopup: FC<IProps> = ({ onClose }) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
-  useCloseModals(onClose, modalRef);
-
   return (
     <div>
       <div>

@@ -1,13 +1,15 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import React, { FC, useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import css from "./FormRegistration.module.css";
 import { ReactComponent as OpenEyeIcon } from "../../img/openeye.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../img/closeeye.svg";
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { setUser } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 
 interface IForms {
   name: string;
@@ -22,7 +24,8 @@ interface IProps {
 const FormRegistration: FC<IProps> = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object({
     name: Yup.string().required(`Enter name, please`),
@@ -38,23 +41,31 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
   const initialValues: IForms = { name: "", email: "", password: "" };
 
   const onSubmit = async (values: any, { resetForm }: any) => {
-    // await dispatch(loginThunk(values));
-
     try {
-      const signUp = async () => {
-        await createUserWithEmailAndPassword(
-          auth,
-          values.email,
-          values.password
-        );
-      };
-      signUp();
+      const signUp = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      await updateProfile(signUp.user, {
+        displayName: values.name,
+      });
+      const user = signUp.user;
+
+      dispatch(
+        setUser({
+          id: user.uid,
+          email: values.email,
+          name: values.name,
+        })
+      );
+      navigate("/nannies");
     } catch (error) {
       console.error(error);
     }
 
     resetForm();
-    // setRedirect(true);
+
     toast.success(`Success registration`);
 
     onClose(true);

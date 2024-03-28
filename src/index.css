@@ -73,6 +73,14 @@ img {
 
 .container {
   margin: 0 auto;
+  background: rgb(243, 243, 243);
+  height: 100vh;
+}
+
+.whiteBack {
+  margin: 0 auto;
+  height: 100vh;
+  background: var(--primary-color-white);
 }
 
 a {

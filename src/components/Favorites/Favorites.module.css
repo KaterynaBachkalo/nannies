@@ -6,7 +6,6 @@
   padding-top: 152px;
   padding-bottom: 152px;
   width: 1440px;
-  height: 100hw;
   margin: 0 auto;
 }
 
@@ -15,4 +14,12 @@
   flex-direction: column;
   align-items: center;
   gap: 32px;
+}
+
+.emptyFavorites {
+  font-size: 24px;
+  font-weight: 500;
+
+  text-align: center;
+  color: var(--primary-color-black);
 }

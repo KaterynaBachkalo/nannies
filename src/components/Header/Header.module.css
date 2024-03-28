@@ -10,7 +10,6 @@
   width: 1440px;
   padding: 20px 128px;
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .navigation {
@@ -65,6 +64,19 @@
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+.userWrap {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.userName {
+  color: var(--primary-color-white);
+  font-size: 18px;
+  line-height: 1.11;
+  letter-spacing: -1%;
 }
 
 .btnLogout {

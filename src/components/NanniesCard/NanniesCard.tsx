@@ -12,6 +12,8 @@ import { addToFavorites, deleteFavorites } from "../../redux/nanniesSlice";
 import { useSelector } from "react-redux";
 import { selectFavoritesNannies } from "../../redux/selectors";
 import AppointmentPopup from "../AppointmentPopup/AppointmentPopup";
+import { selectUser } from "../../redux/authSlice";
+import { toast } from "react-toastify";
 
 interface IProp {
   nanny: INanny;
@@ -38,6 +40,8 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
 
   const favorites = useSelector(selectFavoritesNannies);
 
+  const { currentUser } = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   const birthDay = new Date(birthday).getTime();
@@ -46,11 +50,19 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
   const age = Math.floor(differenceMs / (1000 * 60 * 60 * 24 * 365.25));
 
   const addToFavorite = () => {
-    dispatch(addToFavorites(name));
+    if (currentUser) {
+      dispatch(addToFavorites(name));
+    } else {
+      toast.warning("This feature is only available to authorized users");
+    }
   };
 
   const deleteFavorite = () => {
-    dispatch(deleteFavorites(name));
+    if (currentUser) {
+      dispatch(deleteFavorites(name));
+    } else {
+      toast.warning("This feature is only available to authorized users");
+    }
   };
 
   const handleOpenPopUp = () => {
@@ -81,7 +93,9 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
               Price / 1 hour:{" "}
               <span className={css.price}>{price_per_hour}$</span>
             </p>
-            {!favorites.includes(name) ? (
+            {!currentUser ? (
+              <Iconheart onClick={addToFavorite} className={css.heart} />
+            ) : !favorites.includes(name) ? (
               <Iconheart onClick={addToFavorite} className={css.heart} />
             ) : (
               <Iconfillheart onClick={deleteFavorite} className={css.heart} />

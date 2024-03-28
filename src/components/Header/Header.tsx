@@ -1,12 +1,23 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
 import Modal from "../Modal/Modal";
 import LoginPopup from "../LoginPopup/LoginPopup";
 import RegistrationPopup from "../RegistrationPopup/RegistrationPopup";
+import { useSelector } from "react-redux";
+import { selectUser, setUser } from "../../redux/authSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useDispatch } from "react-redux";
+import { clearState } from "../../redux/nanniesSlice";
+import { ReactComponent as IconAvatar } from "../../img/avatar.svg";
 
 const Header = () => {
-  const [isAuthorized] = useState(false);
+  const { currentUser } = useSelector(selectUser);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isOpenLoginPopup, setOpenLoginPopup] = useState(false);
   const [isOpenRegistrationPopup, setOpenRegistrationPopup] = useState(false);
 
@@ -23,13 +34,32 @@ const Header = () => {
     setOpenRegistrationPopup(false);
   };
 
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(setUser(null));
+        dispatch(clearState());
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className={css.header}>
       <div className={css.container}>
         <nav className={css.navigation}>
-          <NavLink to="/" className={css.logo}>
-            Nanny.Services
-          </NavLink>
+          {!currentUser ? (
+            <NavLink to="/" className={css.logo}>
+              Nanny.Services
+            </NavLink>
+          ) : (
+            <NavLink to="/nannies" className={css.logo}>
+              Nanny.Services
+            </NavLink>
+          )}
+
           <div className={css.wraplist}>
             <ul className={css.list}>
               <li>
@@ -42,19 +72,27 @@ const Header = () => {
                   Nannies
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/favorites" className={css.link}>
-                  Favorites
-                </NavLink>
-              </li>
-            </ul>
-            {isAuthorized ? (
-              <ul className={css.wrapButtonsLogout}>
+
+              {currentUser && (
                 <li>
-                  <p>User</p>
+                  <NavLink to="/favorites" className={css.link}>
+                    Favorites
+                  </NavLink>
+                </li>
+              )}
+            </ul>
+            {currentUser ? (
+              <ul className={css.wrapButtonsLogout}>
+                <li className={css.userWrap}>
+                  <IconAvatar />
+                  <p className={css.userName}>{currentUser.name}</p>
                 </li>
                 <li>
-                  <button type="button" className={css.btnLogout}>
+                  <button
+                    type="button"
+                    className={css.btnLogout}
+                    onClick={handleLogOut}
+                  >
                     Log out
                   </button>
                 </li>

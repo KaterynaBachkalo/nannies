@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { fetchNanniesThunk } from "./operations";
 import { toast } from "react-toastify";
 import { INanny } from "../types";
 
@@ -12,12 +11,15 @@ interface IState {
   currentPage: number;
 }
 
-const handlePending = (state: IState): void => {
+export const handlePending = (state: IState): void => {
   state.isLoading = true;
   state.error = null;
 };
 
-const handleRejected = (state: IState, action: PayloadAction<any>): void => {
+export const handleRejected = (
+  state: IState,
+  action: PayloadAction<string>
+): void => {
   state.isLoading = false;
   state.error = action.payload;
 
@@ -35,7 +37,7 @@ const handleRejected = (state: IState, action: PayloadAction<any>): void => {
   }
 };
 
-const INITIAL_STATE: IState = {
+export const INITIAL_STATE: IState = {
   items: [],
   isLoading: false,
   error: null,
@@ -57,6 +59,9 @@ const nanniesSlice = createSlice({
         (favorite) => favorite !== action.payload
       );
     },
+    setFavorites(state, action: PayloadAction<string[]>) {
+      state.favorites = action.payload;
+    },
     clearState(state) {
       state.items = [];
     },
@@ -69,24 +74,11 @@ const nanniesSlice = createSlice({
     setNextPage(state) {
       state.currentPage = state.currentPage + 1;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchNanniesThunk.pending, handlePending)
-      .addCase(fetchNanniesThunk.fulfilled, (state, action) => {
-        state.items = [...state.items, ...action.payload];
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(fetchNanniesThunk.rejected, handleRejected);
-
-    // .addCase(fetchAllCarsThunk.pending, handlePending)
-    // .addCase(fetchAllCarsThunk.fulfilled, (state, action) => {
-    //   state.items = action.payload;
-    //   state.isLoading = false;
-    //   state.error = null;
-    // })
-    // .addCase(fetchAllCarsThunk.rejected, handleRejected);
+    setNannies(state, action: PayloadAction<INanny[]>) {
+      state.items = action.payload;
+      state.isLoading = false;
+      state.error = null;
+    },
   },
 });
 
@@ -97,5 +89,7 @@ export const {
   setloadMoreButton,
   setCurrentPage,
   setNextPage,
+  setNannies,
+  setFavorites,
 } = nanniesSlice.actions;
 export const nanniesReducer = nanniesSlice.reducer;

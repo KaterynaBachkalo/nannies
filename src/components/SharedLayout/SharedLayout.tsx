@@ -14,7 +14,7 @@ export const SharedLayout = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <div className="container">
+    <div className={isHome ? "whiteBack" : "container"}>
       {!isHome && <Header />}
       <ScrollToTopButton />
       <ToastContainer

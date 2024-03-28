@@ -8,6 +8,7 @@ import { ReactComponent as OpenEyeIcon } from "../../img/openeye.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../img/closeeye.svg";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 interface IForms {
   email: string;
@@ -21,7 +22,7 @@ interface IProps {
 const FormLogin: FC<IProps> = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -37,15 +38,21 @@ const FormLogin: FC<IProps> = ({ onClose }) => {
 
   const onSubmit = async (values: any, { resetForm }: any) => {
     try {
-      const signIn = async () => {
-        await signInWithEmailAndPassword(auth, values.email, values.password);
-      };
-      signIn();
-    } catch (error) {}
-    resetForm();
-    // setRedirect(true);
+      const signIn = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      const user = signIn.user;
 
-    toast.success(`Success login`);
+      toast.success(`${user.displayName}, you have successfully logged in!`);
+
+      navigate("/nannies");
+    } catch (error) {
+      toast.error("Invalid data. Sign in is failed. Please try again.");
+    }
+    resetForm();
+
     onClose(true);
   };
 

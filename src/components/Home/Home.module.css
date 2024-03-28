@@ -6,6 +6,7 @@
 
 .container {
   position: relative;
+  background-color: var(--primary-color-white);
 
   width: 1440px;
 

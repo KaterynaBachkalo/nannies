@@ -13,6 +13,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { usersReducer } from "./authSlice";
 
 const favoriteConfig = {
   key: "favorites",
@@ -22,8 +23,9 @@ const favoriteConfig = {
 
 export const store = configureStore({
   reducer: {
-    nannies: persistReducer(favoriteConfig, nanniesReducer),
+    nannies: persistReducer(favoriteConfig, nanniesReducer, usersReducer),
     filter: filterReducer,
+    users: usersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
