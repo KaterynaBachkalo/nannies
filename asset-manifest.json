@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nanny-services/static/css/main.5e2856f3.css",
-    "main.js": "/nanny-services/static/js/main.cf4a7f92.js",
+    "main.js": "/nanny-services/static/js/main.348dcc04.js",
     "static/css/62.2cd001b7.chunk.css": "/nanny-services/static/css/62.2cd001b7.chunk.css",
     "static/js/62.debe6457.chunk.js": "/nanny-services/static/js/62.debe6457.chunk.js",
     "static/css/492.91346c2a.chunk.css": "/nanny-services/static/css/492.91346c2a.chunk.css",
@@ -25,7 +25,7 @@
     "static/media/check.svg": "/nanny-services/static/media/check.bcfab1f07d1f418611a80ccdd4978246.svg",
     "static/media/chevron-down.svg": "/nanny-services/static/media/chevron-down.4ccbc5dc7b972c8bbb1c70d9a162d0a8.svg",
     "main.5e2856f3.css.map": "/nanny-services/static/css/main.5e2856f3.css.map",
-    "main.cf4a7f92.js.map": "/nanny-services/static/js/main.cf4a7f92.js.map",
+    "main.348dcc04.js.map": "/nanny-services/static/js/main.348dcc04.js.map",
     "62.2cd001b7.chunk.css.map": "/nanny-services/static/css/62.2cd001b7.chunk.css.map",
     "62.debe6457.chunk.js.map": "/nanny-services/static/js/62.debe6457.chunk.js.map",
     "492.91346c2a.chunk.css.map": "/nanny-services/static/css/492.91346c2a.chunk.css.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.5e2856f3.css",
-    "static/js/main.cf4a7f92.js"
+    "static/js/main.348dcc04.js"
   ]
 }
