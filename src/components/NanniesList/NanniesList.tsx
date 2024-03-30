@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import NanniesCard from "../NanniesCard/NanniesCard";
 import { ref, onValue } from "firebase/database";
 import { db } from "../../firebase";
@@ -16,7 +16,7 @@ import {
 } from "../../redux/nanniesSlice";
 import Loader from "../Loader/Loader";
 
-const NanniesList = () => {
+const NanniesList: FC = () => {
   const isLoading = useSelector(selectIsLoading);
 
   const [loadedNannies, setLoadedNannies] = useState<INanny[]>([]);
@@ -50,12 +50,11 @@ const NanniesList = () => {
 
   const handleLoadMore = () => {
     dispatch(setNextPage());
-    const nextPage = currentPage + 1;
-    const startIndex = nextPage * nanniesPerPage;
+    const startIndex = currentPage * nanniesPerPage;
     const endIndex = startIndex + nanniesPerPage;
     const newVisibleNannies = loadedNannies.slice(startIndex, endIndex);
     setVisibleNannies([...visibleNannies, ...newVisibleNannies]);
-    setCurrentPage(nextPage);
+    setCurrentPage(currentPage);
   };
 
   return (

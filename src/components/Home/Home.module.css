@@ -83,8 +83,9 @@
 }
 
 .btnLogin:hover {
-  background-color: var(--primary-color-blue);
+  background-color: var(--secondary-color-white);
   border: transparent;
+  color: var(--primary-color-blue);
 }
 
 .btnRegistration {
