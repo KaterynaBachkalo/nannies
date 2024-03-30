@@ -4,8 +4,7 @@ import { getDatabase } from "firebase/database";
 // import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  // apiKey: import.meta.env.VITE_API_KEY,
-  apiKey: "AIzaSyB2o0qKN3nmKMYT5eHpAQVZEishLSn-GCY",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "nannies-service-7f22d.firebaseapp.com",
   databaseURL:
     "https://nannies-service-7f22d-default-rtdb.europe-west1.firebasedatabase.app",
