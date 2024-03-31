@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa6";
 import { ReactComponent as IconCheck } from "../../img/check.svg";
 import css from "./Home.module.css";
-import LoginPopup from "../LoginPopup/LoginPopup";
-import RegistrationPopup from "../RegistrationPopup/RegistrationPopup";
+import LoginPopup from "../Popups/LoginPopup/LoginPopup";
+import RegistrationPopup from "../Popups/RegistrationPopup/RegistrationPopup";
 import Modal from "../Modal/Modal";
 
 const Home = () => {

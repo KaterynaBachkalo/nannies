@@ -1,10 +1,10 @@
 import { FC, useRef, useState } from "react";
 import { nanoid } from "nanoid";
-import { ReactComponent as IconChevron } from "../img/chevron-down.svg";
+import { ReactComponent as IconChevron } from "../../img/chevron-down.svg";
 import css from "./Filters.module.css";
 import { useDispatch } from "react-redux";
-import { setFilter } from "../redux/filterSlice";
-import useCloseModals from "../services/closeModals";
+import { setFilter } from "../../redux/filterSlice";
+import useCloseDropdown from "../../services/closeDropdown";
 
 const Filters: FC = () => {
   const defaultFilter = "Show all";
@@ -23,11 +23,12 @@ const Filters: FC = () => {
 
   const [isOpenDropdown, setOpenDropdown] = useState(false);
 
-  const dropdownref = useRef<HTMLDivElement>(null);
+  const dropdownref = useRef<HTMLDivElement | null>(null);
+  const iconref = useRef<HTMLDivElement | null>(null);
 
   const dispatch = useDispatch();
 
-  const handleClick = (selectedFilter: string) => {
+  const handleSelect = (selectedFilter: string) => {
     setSelectedFilter(selectedFilter);
     dispatch(setFilter(selectedFilter));
   };
@@ -36,7 +37,7 @@ const Filters: FC = () => {
     setOpenDropdown(false);
   };
 
-  useCloseModals(onClose, dropdownref);
+  useCloseDropdown(onClose, dropdownref, iconref);
 
   return (
     <div className={css.container}>
@@ -45,20 +46,22 @@ const Filters: FC = () => {
         <button
           type="button"
           className={css.btnInput}
-          onClick={() => setOpenDropdown(!isOpenDropdown)}
+          onClick={() => {
+            setOpenDropdown(!isOpenDropdown);
+          }}
         >
           {selectedFilter}
-          <IconChevron />
+          <IconChevron ref={iconref} />
         </button>
 
         {isOpenDropdown && (
-          <div className={css.dropdown} ref={dropdownref} onClick={onClose}>
+          <div className={css.dropdown} onClick={onClose} ref={dropdownref}>
             <ul className={css.list}>
               {options.map((opt) => (
                 <li
                   key={nanoid()}
                   className={css.item}
-                  onClick={() => handleClick(opt)}
+                  onClick={() => handleSelect(opt)}
                   defaultValue={defaultFilter}
                 >
                   {opt}

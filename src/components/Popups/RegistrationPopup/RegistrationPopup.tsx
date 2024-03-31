@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import css from "./RegistrationPopup.module.css";
-import FormRegistration from "../FormRegistration/FormRegistration";
+import FormRegistration from "../../Forms/FormRegistration/FormRegistration";
 
 interface IProps {
   onClose: (value: boolean) => void;

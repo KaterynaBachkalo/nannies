@@ -1,7 +1,7 @@
 import React, { FC, LegacyRef, RefObject, useRef } from "react";
 import { generateTime } from "../../services/generateTime";
-import useCloseModals from "../../services/closeModals";
 import css from "./TimeMenu.module.css";
+import useCloseDropdown from "../../services/closeDropdown";
 
 interface IProps {
   onSelect: (value: string) => void;
@@ -16,12 +16,12 @@ const TimeMenu: FC<IProps> = React.forwardRef(({ onSelect, onClose }, ref) => {
     onSelect(selectedTime);
   };
 
-  const inputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef(null);
 
-  useCloseModals(onClose, inputRef, ref as RefObject<HTMLDivElement>);
+  useCloseDropdown(onClose, inputRef, ref as RefObject<HTMLDivElement>);
 
   return (
-    <div ref={inputRef} className={css.dropDown}>
+    <div className={css.dropDown} ref={inputRef}>
       <p className={css.timeTitle}>Meeting time</p>
       <ul className={css.timeList}>
         {timeOptions.map((time) => (

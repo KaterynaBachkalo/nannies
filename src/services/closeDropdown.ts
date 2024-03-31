@@ -2,7 +2,7 @@ import { useEffect, RefObject } from "react";
 
 type CloseFunction = (value: boolean) => void;
 
-const useCloseModals = (
+const useCloseDropdown = (
   func: CloseFunction,
   myRef: RefObject<HTMLElement>,
   ref?: RefObject<HTMLElement>
@@ -15,20 +15,23 @@ const useCloseModals = (
     };
 
     const handleClose = (event: MouseEvent) => {
-      if (myRef.current && !myRef.current.contains(event.target as Node)) {
+      if (
+        myRef.current &&
+        !myRef.current.contains(event.target as Node) &&
+        ref?.current &&
+        !ref?.current.contains(event.target as Node)
+      ) {
         func(false);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handleClose);
-    document.body.classList.add("body-scroll-lock");
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClose);
-      document.body.classList.remove("body-scroll-lock");
     };
   }, [func, myRef, ref]);
 };
 
-export default useCloseModals;
+export default useCloseDropdown;

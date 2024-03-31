@@ -1,18 +1,16 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import React, { FC, useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import css from "./FormRegistration.module.css";
-import { ReactComponent as OpenEyeIcon } from "../../img/openeye.svg";
-import { ReactComponent as ClosedEyeIcon } from "../../img/closeeye.svg";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { setUser } from "../../redux/authSlice";
+import css from "./FormLogin.module.css";
+import { ReactComponent as OpenEyeIcon } from "../../../img/openeye.svg";
+import { ReactComponent as ClosedEyeIcon } from "../../../img/closeeye.svg";
+import { auth } from "../../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 interface IForms {
-  name: string;
   email: string;
   password: string;
 }
@@ -21,14 +19,12 @@ interface IProps {
   onClose: (value: boolean) => void;
 }
 
-const FormRegistration: FC<IProps> = ({ onClose }) => {
+const FormLogin: FC<IProps> = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const validationSchema = Yup.object({
-    name: Yup.string().required(`Enter name, please`),
     email: Yup.string()
       .email("Invalid email format")
       .required(`Enter email, please`),
@@ -38,35 +34,22 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
       .max(64, `Max 64 characters`),
   });
 
-  const initialValues: IForms = { name: "", email: "", password: "" };
+  const initialValues: IForms = { email: "", password: "" };
 
   const onSubmit = async (values: any, { resetForm }: any) => {
     try {
-      const signUp = await createUserWithEmailAndPassword(
+      const signIn = await signInWithEmailAndPassword(
         auth,
         values.email,
         values.password
       );
-      await updateProfile(signUp.user, {
-        displayName: values.name,
-      });
-      const user = signUp.user;
+      const user = signIn.user;
 
-      dispatch(
-        setUser({
-          id: user.uid,
-          email: values.email,
-          name: values.name,
-        })
-      );
+      toast.success(`${user.displayName}, you have successfully logged in!`);
+
       navigate("/nannies");
-      toast.success(`Success registration`);
-    } catch (error: any) {
-      if (error.code === "auth/email-already-in-use") {
-        toast.error("Email already in use");
-      } else {
-        console.error(error);
-      }
+    } catch (error) {
+      toast.error("Invalid data. Sign in is failed. Please try again.");
     }
     resetForm();
 
@@ -82,16 +65,12 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
       <Form className={css.form}>
         <div className={css.inputWrap}>
           <div className={css.wrap}>
-            <Field name="name" placeholder="Name" className={css.input} />
-            <ErrorMessage
+            <Field
+              type="text"
               name="email"
-              component="div"
-              className={css.errormessage}
+              placeholder="Email"
+              className={css.input}
             />
-          </div>
-
-          <div className={css.wrap}>
-            <Field name="email" placeholder="Email" className={css.input} />
             <ErrorMessage
               name="email"
               component="div"
@@ -128,4 +107,4 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
   );
 };
 
-export default FormRegistration;
+export default FormLogin;

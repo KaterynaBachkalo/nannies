@@ -1,8 +1,7 @@
-import React, { FC, useRef } from "react";
+import { FC } from "react";
 import css from "./AppointmentPopup.module.css";
-import useCloseModals from "../../services/closeModals";
-import FormAppointment from "../FormAppointment/FormAppointment";
-import { INanny } from "../../types";
+import FormAppointment from "../../Forms/FormAppointment/FormAppointment";
+import { INanny } from "../../../types";
 
 interface IProps {
   onClose: (value: boolean) => void;
@@ -12,11 +11,8 @@ interface IProps {
 const AppointmentPopup: FC<IProps> = ({ onClose, nanny }) => {
   const { avatar_url, name } = nanny;
 
-  const modalRef = useRef<HTMLDivElement | null>(null);
-  useCloseModals(onClose, modalRef);
-
   return (
-    <div ref={modalRef}>
+    <div>
       <div>
         <p className={css.subtitle}>
           Arranging a meeting with a caregiver for your child is the first step

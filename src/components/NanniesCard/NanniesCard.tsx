@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { addToFavorites, deleteFavorites } from "../../redux/nanniesSlice";
 import { useSelector } from "react-redux";
 import { selectFavoritesNannies } from "../../redux/selectors";
-import AppointmentPopup from "../AppointmentPopup/AppointmentPopup";
+import AppointmentPopup from "../Popups/AppointmentPopup/AppointmentPopup";
 import { selectUser } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 

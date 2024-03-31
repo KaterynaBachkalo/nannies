@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import css from "./LoginPopup.module.css";
-import FormLogin from "../FormLogin/FormLogin";
+import FormLogin from "../../Forms/FormLogin/FormLogin";
 
 interface IProps {
   onClose: (value: boolean) => void;

@@ -1,7 +1,7 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
-import React, { FC, useRef, useState } from "react";
-import { ReactComponent as Icontime } from "../../img/time.svg";
-import TimeMenu from "../TimeMenu/TimeMenu";
+import { FC, useRef, useState } from "react";
+import { ReactComponent as Icontime } from "../../../img/time.svg";
+import TimeMenu from "../../TimeMenu/TimeMenu";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import css from "./FormAppointment.module.css";
