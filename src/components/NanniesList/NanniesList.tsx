@@ -6,7 +6,11 @@ import { INanny } from "../../types";
 import css from "./NanniesList.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectCurrentPage, selectIsLoading } from "../../redux/selectors";
+import {
+  selectCurrentPage,
+  selectFilter,
+  selectIsLoading,
+} from "../../redux/selectors";
 import {
   setCurrentPage,
   setError,
@@ -15,9 +19,11 @@ import {
   setNextPage,
 } from "../../redux/nanniesSlice";
 import Loader from "../Loader/Loader";
+import { nanoid } from "nanoid";
 
 const NanniesList: FC = () => {
   const isLoading = useSelector(selectIsLoading);
+  const filter = useSelector(selectFilter);
 
   const [loadedNannies, setLoadedNannies] = useState<INanny[]>([]);
   const [visibleNannies, setVisibleNannies] = useState<INanny[]>([]);
@@ -38,7 +44,6 @@ const NanniesList: FC = () => {
         if (data) {
           dispatch(setNannies(data));
           setLoadedNannies(data);
-          setVisibleNannies(data.slice(0, nanniesPerPage));
         }
       });
       return () => unsubscribe();
@@ -57,21 +62,65 @@ const NanniesList: FC = () => {
     setCurrentPage(currentPage);
   };
 
+  useEffect(() => {
+    if (loadedNannies.length > 0) {
+      let filteredNannies = [...loadedNannies];
+
+      switch (filter) {
+        case "A to Z":
+          filteredNannies.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case "Z to A":
+          filteredNannies.sort((a, b) => b.name.localeCompare(a.name));
+          break;
+        case "Less than 10$":
+          filteredNannies = filteredNannies.filter(
+            (nanny) => nanny.price_per_hour < 10
+          );
+          break;
+        case "Greater than 10$":
+          filteredNannies = filteredNannies.filter(
+            (nanny) => nanny.price_per_hour > 10
+          );
+          break;
+        case "Popular":
+          filteredNannies.sort((a, b) => b.rating - a.rating);
+          break;
+        case "Not popular":
+          filteredNannies.sort((a, b) => a.rating - b.rating);
+          break;
+        case "Show all":
+        default:
+          break;
+      }
+
+      setVisibleNannies(filteredNannies.slice(0, nanniesPerPage));
+      // setVisibleNannies(filteredNannies);
+    }
+  }, [filter, loadedNannies]);
+
   return (
     <div className={css.back}>
       <div className={css.container}>
         <div className={css.list}>
-          {visibleNannies?.map((nanny: INanny) => (
-            <NanniesCard key={nanny.name} nanny={nanny} />
-          ))}
+          {visibleNannies.length === 0 ? (
+            <p>No nannies found with the selected criteria</p>
+          ) : (
+            <div className={css.list}>
+              {visibleNannies.map((nanny: INanny) => (
+                <NanniesCard key={nanoid()} nanny={nanny} />
+              ))}
+            </div>
+          )}
         </div>
-        {loadedNannies.length > visibleNannies.length && (
-          <div className={css.btnWrap}>
-            <button onClick={handleLoadMore} className={css.btnLoadMore}>
-              Load more
-            </button>
-          </div>
-        )}
+        {loadedNannies.length > visibleNannies.length &&
+          visibleNannies.length !== 0 && (
+            <div className={css.btnWrap}>
+              <button onClick={handleLoadMore} className={css.btnLoadMore}>
+                Load more
+              </button>
+            </div>
+          )}
       </div>
       {isLoading && !visibleNannies && <Loader />}
     </div>
