@@ -1,4 +1,4 @@
-**Читати українською: [Nanny.Services](README_uk.md).**<br />
+**Read in English: [Nanny.Services](README.md).**<br />
 
 # Додаток "Nanny.Services"
 
