@@ -1,4 +1,4 @@
-**Read in English: [Nanny.Services](README_en.md).**<br />
+**Read in English: [Nanny.Services](README.md).**<br />
 
 # Додаток "Nanny.Services"
 
