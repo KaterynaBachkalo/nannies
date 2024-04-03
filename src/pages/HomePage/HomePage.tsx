@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom";
 const HomePage = () => {
   const { currentUser } = useSelector(selectUser);
 
-  return <div>{!currentUser ? <Home /> : <Navigate to="/nannies" />}</div>;
+  return <>{!currentUser ? <Home /> : <Navigate to="/nannies" />}</>;
 };
 
 export default HomePage;

@@ -5,10 +5,10 @@ import css from "./NanniesPage.module.css";
 
 const NanniesPage = () => {
   return (
-    <div className={css.container}>
+    <section className={css.container}>
       <Filters />
       <NanniesList />
-    </div>
+    </section>
   );
 };
 

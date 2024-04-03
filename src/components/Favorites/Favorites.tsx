@@ -36,22 +36,20 @@ const Favorites = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.back}>
-      <div className={css.container}>
-        {favorites.length !== 0 ? (
-          <div className={css.list}>
-            {nannies
-              ?.filter((nanny) => favorites.includes(nanny.name))
-              .map((nanny) => (
-                <NanniesCard key={nanny.name} nanny={nanny} />
-              ))}
-          </div>
-        ) : (
-          <p className={css.emptyFavorites}>Your favorite cars may be here!</p>
-        )}
-        {isLoading && !nannies && <Loader />}
-      </div>
-    </div>
+    <>
+      {favorites.length !== 0 ? (
+        <div className={css.list}>
+          {nannies
+            ?.filter((nanny) => favorites.includes(nanny.name))
+            .map((nanny) => (
+              <NanniesCard key={nanny.name} nanny={nanny} />
+            ))}
+        </div>
+      ) : (
+        <p className={css.emptyFavorites}>Your favorite cars may be here!</p>
+      )}
+      {isLoading && !nannies && <Loader />}
+    </>
   );
 };
 

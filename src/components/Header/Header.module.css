@@ -8,7 +8,7 @@
 .container {
   min-height: 88px;
   max-width: 1440px;
-  padding: 20px calc(15px + (128 - 15) * ((100vw - 320px) / (1440 - 320)));
+  padding: 20px calc(25px + (128 - 25) * ((100vw - 320px) / (1440 - 320)));
   margin: 0 auto;
 }
 
@@ -131,7 +131,7 @@
   border: 1px solid var(--border-color-white);
   max-width: 124px;
   height: 48px;
-  padding: 14px calc(33px + (39 - 33) * ((100vw - 320px) / (1440 - 320)));
+  padding: 14px calc(32px + (39 - 32) * ((100vw - 320px) / (1440 - 320)));
   border-radius: 30px;
   transition: background-color border 0.3s easy;
   outline: none;
@@ -152,7 +152,7 @@
   border: 1px solid var(--border-color-white);
   max-width: 168px;
   height: 48px;
-  padding: 14px calc(33px + (40 - 33) * ((100vw - 320px) / (1440 - 320)));
+  padding: 14px calc(32px + (40 - 32) * ((100vw - 320px) / (1440 - 320)));
   border-radius: 30px;
   transition: color background-color 0.3 easy;
 }

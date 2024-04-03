@@ -23,16 +23,16 @@
 .modal {
   position: relative;
   padding: 64px;
+  padding: calc(30px + (64 - 30) * ((100vw - 320px) / (1440 - 320)));
   border-radius: 30px;
 
   background: var(--secondary-color-white);
   z-index: 300;
-  /* width: 566px; */
   width: calc(280px + (566 - 280) * ((100vw - 320px) / (1440 - 320)));
 }
 
 .modalBig {
-  width: 600px;
+  width: calc(280px + (600 - 280) * ((100vw - 320px) / (1440 - 320)));
 }
 
 .btnClose {

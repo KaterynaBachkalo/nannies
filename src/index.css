@@ -24,6 +24,7 @@ body {
   font-size: 16px;
   font-style: normal;
   line-height: 1.25;
+  background: rgb(243, 243, 243);
 }
 
 ::-webkit-scrollbar {
@@ -71,11 +72,10 @@ img {
   overflow: hidden;
 }
 
-.container {
+/* .container {
   min-width: 320px;
   margin: 0 auto;
-  background: rgb(243, 243, 243);
-}
+} */
 
 .whiteBack {
   margin: 0 auto;

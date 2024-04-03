@@ -121,7 +121,6 @@
 .wrapTitles {
   max-width: 613px;
   min-width: 256px;
-  /* padding-top: calc(148px + (163 - 148) * ((100vw - 320px) / (1440 - 320))); */
   padding-top: 163px;
   padding-bottom: 163px;
   padding-left: calc(20px + (96 - 20) * ((100vw - 320px) / (1440 - 320)));
@@ -151,12 +150,19 @@
 }
 
 .subtitle {
-  font-size: calc(20px + (28 - 30) * ((100vw - 320px) / (1440 - 320)));
-  /* font-size: 28px; */
+  font-size: calc(20px + (28 - 20) * ((100vw - 320px) / (1440 - 320)));
+  font-family: Helvetica Neue;
+  font-weight: 400;
   line-height: 1.07;
   letter-spacing: -0.02em;
   color: var(--secondary-color-white);
   padding-bottom: 64px;
+}
+
+@media only screen and (min-width: 1441px) {
+  .subtitle {
+    font-size: 28px;
+  }
 }
 
 .linkGet {

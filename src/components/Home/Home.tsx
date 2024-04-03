@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   return (
-    <div className={css.maincontainer}>
+    <section className={css.maincontainer}>
       <div className={`${css.container} ${css.background}`}>
         <div className={css.header}>
           <nav className={css.navigation}>
@@ -81,10 +81,10 @@ const Home = () => {
           </nav>
         </div>
         <div className={css.wrapTitles}>
-          <p className={css.title}>Make Life Easier for the Family:</p>
-          <p className={css.subtitle}>
+          <h1 className={css.title}>Make Life Easier for the Family:</h1>
+          <h2 className={css.subtitle}>
             Find Babysitters Online for All Occasions
-          </p>
+          </h2>
           <Link to="/nannies" className={css.linkGet}>
             Get started
             <FaArrowUp className={css.arrow} />
@@ -101,7 +101,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

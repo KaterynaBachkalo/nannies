@@ -14,7 +14,7 @@ export const SharedLayout = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <div className={isHome ? "whiteBack" : "container"}>
+    <div className={isHome ? "whiteBack" : ""}>
       {!isHome && <Header />}
       <ScrollToTopButton />
       <ToastContainer
@@ -22,15 +22,17 @@ export const SharedLayout = () => {
         autoClose={5000}
         hideProgressBar={true}
       />
-      <Suspense
-        fallback={
-          <div>
-            <Loader />
-          </div>
-        }
-      >
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense
+          fallback={
+            <div>
+              <Loader />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
+      </main>
     </div>
   );
 };

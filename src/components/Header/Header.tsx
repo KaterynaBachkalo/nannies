@@ -47,7 +47,7 @@ const Header = () => {
   };
 
   return (
-    <div className={css.header}>
+    <header className={css.header}>
       <div className={css.container}>
         <nav className={css.navigation}>
           {!currentUser ? (
@@ -134,7 +134,7 @@ const Header = () => {
           </div>
         </nav>
       </div>
-    </div>
+    </header>
   );
 };
 
