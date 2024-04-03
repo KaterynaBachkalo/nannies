@@ -1,10 +1,15 @@
 .card {
   display: flex;
   gap: 24px;
-  width: 1184px;
+  max-width: 1184px;
   border-radius: 24px;
   background: var(--primary-color-white);
   padding: 24px;
+}
+@media only screen and (max-width: 768px) {
+  .card {
+    flex-wrap: wrap;
+  }
 }
 
 .avatarBorder {
@@ -42,6 +47,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .position {
@@ -52,6 +58,9 @@
 
 .mainCharacters {
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+
   flex-direction: row;
   align-items: center;
 

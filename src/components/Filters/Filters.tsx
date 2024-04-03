@@ -40,7 +40,7 @@ const Filters: FC = () => {
   useCloseDropdown(onClose, dropdownref, iconref);
 
   return (
-    <div className={css.container}>
+    <>
       <p className={css.title}>Filters</p>
       <div className={css.wrap}>
         <button
@@ -71,7 +71,7 @@ const Filters: FC = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

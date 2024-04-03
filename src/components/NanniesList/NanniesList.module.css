@@ -1,15 +1,3 @@
-.back {
-  background: rgb(243, 243, 243);
-}
-
-.container {
-  padding-top: 32px;
-  padding-bottom: 152px;
-  width: 1440px;
-  height: 100hw;
-  margin: 0 auto;
-}
-
 .list {
   display: flex;
   flex-direction: column;

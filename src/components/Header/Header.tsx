@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import css from "./Header.module.css";
 import Modal from "../Modal/Modal";
 import LoginPopup from "../Popups/LoginPopup/LoginPopup";
 import RegistrationPopup from "../Popups/RegistrationPopup/RegistrationPopup";
@@ -11,6 +10,7 @@ import { auth } from "../../firebase";
 import { useDispatch } from "react-redux";
 import { clearState } from "../../redux/nanniesSlice";
 import { ReactComponent as IconAvatar } from "../../img/avatar.svg";
+import css from "./Header.module.css";
 
 const Header = () => {
   const { currentUser } = useSelector(selectUser);
@@ -60,75 +60,77 @@ const Header = () => {
             </NavLink>
           )}
 
-          <div className={css.wraplist}>
-            <ul className={css.list}>
-              <li>
-                <NavLink to="/" className={css.link}>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/nannies" className={css.link}>
-                  Nannies
-                </NavLink>
-              </li>
-
-              {currentUser && (
+          <div className={css.wraplistSpace}>
+            <div className={css.wraplist}>
+              <ul className={css.list}>
                 <li>
-                  <NavLink to="/favorites" className={css.link}>
-                    Favorites
+                  <NavLink to="/" className={css.link}>
+                    Home
                   </NavLink>
                 </li>
-              )}
-            </ul>
-            {currentUser ? (
-              <ul className={css.wrapButtonsLogout}>
-                <li className={css.userWrap}>
-                  <IconAvatar />
-                  <p className={css.userName}>{currentUser.name}</p>
-                </li>
                 <li>
-                  <button
-                    type="button"
-                    className={css.btnLogout}
-                    onClick={handleLogOut}
-                  >
-                    Log out
-                  </button>
+                  <NavLink to="/nannies" className={css.link}>
+                    Nannies
+                  </NavLink>
                 </li>
+
+                {currentUser && (
+                  <li>
+                    <NavLink to="/favorites" className={css.link}>
+                      Favorites
+                    </NavLink>
+                  </li>
+                )}
               </ul>
-            ) : (
-              <div className={css.wrapButtonsLogin}>
-                <li>
-                  <button
-                    type="button"
-                    className={css.btnLogin}
-                    onClick={handleOpenLoginPopup}
-                  >
-                    Login
-                  </button>
-                </li>
-                {isOpenLoginPopup && (
-                  <Modal onClose={closeModal} title="Log In">
-                    <LoginPopup onClose={closeModal} />
-                  </Modal>
-                )}
-                <li>
-                  <button
-                    type="button"
-                    className={css.btnRegistration}
-                    onClick={handleOpenRegistrationPopup}
-                  >
-                    Registration
-                  </button>
-                </li>
-                {isOpenRegistrationPopup && (
-                  <Modal onClose={closeModal} title="Registration">
-                    <RegistrationPopup onClose={closeModal} />
-                  </Modal>
-                )}
-              </div>
-            )}
+              {currentUser ? (
+                <ul className={css.wrapButtonsLogout}>
+                  <li className={css.userWrap}>
+                    <IconAvatar />
+                    <p className={css.userName}>{currentUser.name}</p>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className={css.btnLogout}
+                      onClick={handleLogOut}
+                    >
+                      Log out
+                    </button>
+                  </li>
+                </ul>
+              ) : (
+                <div className={css.wrapButtonsLogin}>
+                  <li>
+                    <button
+                      type="button"
+                      className={css.btnLogin}
+                      onClick={handleOpenLoginPopup}
+                    >
+                      Login
+                    </button>
+                  </li>
+                  {isOpenLoginPopup && (
+                    <Modal onClose={closeModal} title="Log In">
+                      <LoginPopup onClose={closeModal} />
+                    </Modal>
+                  )}
+                  <li>
+                    <button
+                      type="button"
+                      className={css.btnRegistration}
+                      onClick={handleOpenRegistrationPopup}
+                    >
+                      Registration
+                    </button>
+                  </li>
+                  {isOpenRegistrationPopup && (
+                    <Modal onClose={closeModal} title="Registration">
+                      <RegistrationPopup onClose={closeModal} />
+                    </Modal>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </nav>
       </div>

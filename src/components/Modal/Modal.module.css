@@ -27,7 +27,8 @@
 
   background: var(--secondary-color-white);
   z-index: 300;
-  width: 566px;
+  /* width: 566px; */
+  width: calc(280px + (566 - 280) * ((100vw - 320px) / (1440 - 320)));
 }
 
 .modalBig {
@@ -46,7 +47,9 @@
 }
 
 .title {
-  font-size: 40px;
+  font-size: calc(28px + (40 - 28) * ((100vw - 320px) / (1440 - 320)));
+
+  /* font-size: 40px; */
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
