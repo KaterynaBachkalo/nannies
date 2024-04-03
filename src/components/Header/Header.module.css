@@ -137,6 +137,12 @@
   outline: none;
 }
 
+@media only screen and (min-width: 1440px) {
+  .btnLogin {
+    padding: 14px 39px;
+  }
+}
+
 .btnLogin:hover {
   background-color: var(--secondary-color-white);
   border: transparent;
@@ -155,6 +161,12 @@
   padding: 14px calc(32px + (40 - 32) * ((100vw - 320px) / (1440 - 320)));
   border-radius: 30px;
   transition: color background-color 0.3 easy;
+}
+
+@media only screen and (min-width: 1440px) {
+  .btnRegistration {
+    padding: 14px 40px;
+  }
 }
 
 .btnRegistration:hover {
