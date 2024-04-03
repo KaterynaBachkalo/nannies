@@ -13,8 +13,6 @@
   min-width: 256px;
   background: url(../../img/image.png) no-repeat;
   background-size: calc(699px + (0 - 0) * ((100vw - 320px) / (1440 - 320))) 100%;
-  /* background-size: 50vw; */
-  /* background-size: contain; */
   background-position: right bottom;
 }
 

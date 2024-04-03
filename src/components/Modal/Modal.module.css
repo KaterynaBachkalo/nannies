@@ -48,8 +48,6 @@
 
 .title {
   font-size: calc(28px + (40 - 28) * ((100vw - 320px) / (1440 - 320)));
-
-  /* font-size: 40px; */
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
