@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Modal from "../Modal/Modal";
 import { INanny } from "../../types";
 import { ReactComponent as Iconmap } from "../../img/map.svg";

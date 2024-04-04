@@ -1,6 +1,5 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
-import React, { FC, useState } from "react";
-// import { useDispatch } from "react-redux";
+import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import css from "./FormLogin.module.css";
@@ -80,7 +79,7 @@ const FormLogin: FC<IProps> = ({ onClose }) => {
 
           <div className={css.wrap}>
             <Field
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               className={css.input}

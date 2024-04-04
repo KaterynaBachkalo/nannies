@@ -1,5 +1,5 @@
 import React, { MouseEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa6";
 import { ReactComponent as IconCheck } from "../../img/check.svg";
 import css from "./Home.module.css";
@@ -37,14 +37,14 @@ const Home = () => {
             <ul className={css.list}>
               <div className={css.wrapLinks}>
                 <li>
-                  <Link to="/" className={css.home}>
+                  <NavLink to="/" className={css.link}>
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/nannies" className={css.nannies}>
+                  <NavLink to="/nannies" className={css.link}>
                     Nannies
-                  </Link>
+                  </NavLink>
                 </li>
               </div>
               <div className={css.wrapButtons}>

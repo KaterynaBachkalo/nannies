@@ -138,6 +138,11 @@
   background-color: transparent;
   padding: 0;
   margin-top: 14px;
+  transition: color 0.3s ease;
+}
+
+.buttonReadMore:hover {
+  color: var(--primary-color-blue);
 }
 
 .reviewContent {

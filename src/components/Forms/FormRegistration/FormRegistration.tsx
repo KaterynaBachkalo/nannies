@@ -101,7 +101,7 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
 
           <div className={css.wrap}>
             <Field
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               className={css.input}
