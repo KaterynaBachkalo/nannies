@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { INanny } from "../types";
 
-interface IState {
+export interface IState {
   items: INanny[];
   isLoading: boolean;
   error: any | null;

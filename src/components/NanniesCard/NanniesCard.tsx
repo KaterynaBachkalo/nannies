@@ -40,7 +40,7 @@ const NanniesCard: FC<IProp> = ({ nanny }) => {
 
   const favorites = useSelector(selectFavoritesNannies);
 
-  const { currentUser } = useSelector(selectUser);
+  const currentUser = useSelector(selectUser);
 
   const dispatch = useDispatch();
 

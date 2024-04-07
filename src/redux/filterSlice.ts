@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const INITIAL_STATE = {
+export interface IFilter {
+  filter: string;
+}
+
+const INITIAL_STATE: IFilter = {
   filter: "",
 };
 
@@ -9,10 +13,10 @@ const filterSlice = createSlice({
   initialState: INITIAL_STATE,
 
   reducers: {
-    setFilter(state, action) {
+    setFilter(_, action) {
       return action.payload;
     },
-    resetFilter(state, action) {
+    resetFilter(state, _) {
       return (state = INITIAL_STATE);
     },
   },

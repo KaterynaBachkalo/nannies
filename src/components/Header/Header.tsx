@@ -13,7 +13,7 @@ import { ReactComponent as IconAvatar } from "../../img/avatar.svg";
 import css from "./Header.module.css";
 
 const Header = () => {
-  const { currentUser } = useSelector(selectUser);
+  const currentUser = useSelector(selectUser);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,11 +63,13 @@ const Header = () => {
           <div className={css.wraplistSpace}>
             <div className={css.wraplist}>
               <ul className={css.list}>
-                <li>
-                  <NavLink to="/" className={css.link}>
-                    Home
-                  </NavLink>
-                </li>
+                {!currentUser && (
+                  <li>
+                    <NavLink to="/" className={css.link}>
+                      Home
+                    </NavLink>
+                  </li>
+                )}
                 <li>
                   <NavLink to="/nannies" className={css.link}>
                     Nannies

@@ -5,7 +5,7 @@ import { selectUser } from "../../redux/authSlice";
 import { Navigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { currentUser } = useSelector(selectUser);
+  const currentUser = useSelector(selectUser);
 
   return <>{!currentUser ? <Home /> : <Navigate to="/nannies" />}</>;
 };

@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { Reducer, configureStore } from "@reduxjs/toolkit";
 import { nanniesReducer } from "./nanniesSlice";
 import { filterReducer } from "./filterSlice";
 
@@ -23,7 +23,7 @@ const favoriteConfig = {
 
 export const store = configureStore({
   reducer: {
-    nannies: persistReducer(favoriteConfig, nanniesReducer, usersReducer),
+    nannies: persistReducer(favoriteConfig, nanniesReducer) as Reducer,
     filter: filterReducer,
     users: usersReducer,
   },

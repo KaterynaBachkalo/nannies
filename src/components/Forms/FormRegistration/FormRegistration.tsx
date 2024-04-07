@@ -84,7 +84,7 @@ const FormRegistration: FC<IProps> = ({ onClose }) => {
           <div className={css.wrap}>
             <Field name="name" placeholder="Name" className={css.input} />
             <ErrorMessage
-              name="email"
+              name="name"
               component="div"
               className={css.errormessage}
             />

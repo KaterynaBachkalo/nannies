@@ -37,7 +37,7 @@ const FormAppointment: FC<IProps> = ({ onClose }) => {
     age: Yup.number()
       .required(`Enter age, please`)
       .min(1, `Min 1 characters`)
-      .max(2, `Max 2 characters`),
+      .max(99, `Max 2 characters`),
     time: Yup.string(),
     email: Yup.string().email("Invalid email").required(`Enter email, please`),
     name: Yup.string(),
