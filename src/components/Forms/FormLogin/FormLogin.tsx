@@ -5,9 +5,12 @@ import * as Yup from "yup";
 import css from "./FormLogin.module.css";
 import { ReactComponent as OpenEyeIcon } from "../../../img/openeye.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../../img/closeeye.svg";
+import { ReactComponent as GoogleIcon } from "../../../img/google-icon.svg";
 import { auth } from "../../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import AuthProvider from "../../../auth_google";
+import { FirebaseError } from "firebase/app";
 
 interface IForms {
   email: string;
@@ -20,6 +23,7 @@ interface IProps {
 
 const FormLogin: FC<IProps> = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [openGoogleAuth, setOpenGoogleAuth] = useState(false);
 
   const navigate = useNavigate();
 
@@ -48,6 +52,13 @@ const FormLogin: FC<IProps> = ({ onClose }) => {
 
       navigate("/nannies");
     } catch (error) {
+      // if (AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
+      //   return;
+      // }
+      // if (AuthErrorCodes.EXPIRED_POPUP_REQUEST) {
+      //   return;
+      // }
+      console.log(error);
       toast.error("Invalid data. Sign in is failed. Please try again.");
     }
     resetForm();
@@ -55,54 +66,65 @@ const FormLogin: FC<IProps> = ({ onClose }) => {
     onClose(true);
   };
 
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      <Form className={css.form}>
-        <div className={css.inputWrap}>
-          <div className={css.wrap}>
-            <Field
-              type="text"
-              name="email"
-              placeholder="Email"
-              className={css.input}
-            />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className={css.errormessage}
-            />
-          </div>
+  const handleGoogleAuth = () => {
+    setOpenGoogleAuth(true);
+  };
 
-          <div className={css.wrap}>
-            <Field
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              className={css.input}
-            />
-            <div onClick={() => setShowPassword(!showPassword)}>
-              {!showPassword ? (
-                <ClosedEyeIcon className={css.iconeye} />
-              ) : (
-                <OpenEyeIcon className={css.iconeye} />
-              )}
+  return (
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form className={css.form}>
+          <div className={css.inputWrap}>
+            <div className={css.wrap}>
+              <Field
+                type="text"
+                name="email"
+                placeholder="Email"
+                className={css.input}
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.errormessage}
+              />
             </div>
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={css.errormessage}
-            />
+
+            <div className={css.wrap}>
+              <Field
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                className={css.input}
+              />
+              <div onClick={() => setShowPassword(!showPassword)}>
+                {!showPassword ? (
+                  <ClosedEyeIcon className={css.iconeye} />
+                ) : (
+                  <OpenEyeIcon className={css.iconeye} />
+                )}
+              </div>
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={css.errormessage}
+              />
+            </div>
           </div>
-        </div>
-        <button type="submit" className={css.button}>
-          Submit
-        </button>
-      </Form>
-    </Formik>
+          <button type="submit" className={css.button}>
+            Submit
+          </button>
+        </Form>
+      </Formik>
+      <button type="submit" className={css.google} onClick={handleGoogleAuth}>
+        <GoogleIcon />
+        Enter with Google
+      </button>
+      {openGoogleAuth && <AuthProvider />}
+    </>
   );
 };
 
