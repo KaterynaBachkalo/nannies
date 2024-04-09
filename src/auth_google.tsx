@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 export const AuthProvider = () => {
   const auth = getAuth(app);
   const [user, setUser] = useState(auth.currentUser);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const checkUser = async () => {
