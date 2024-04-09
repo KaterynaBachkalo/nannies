@@ -57,6 +57,9 @@ const nanniesSlice = createSlice({
         (favorite) => favorite !== action.payload
       );
     },
+    clearFavorites(state) {
+      state.favorites = [];
+    },
     clearState(state) {
       state.items = [];
     },
@@ -89,5 +92,6 @@ export const {
   setLoading,
   setError,
   setNextPage,
+  clearFavorites,
 } = nanniesSlice.actions;
 export const nanniesReducer = nanniesSlice.reducer;

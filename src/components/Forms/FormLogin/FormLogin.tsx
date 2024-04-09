@@ -7,10 +7,9 @@ import { ReactComponent as OpenEyeIcon } from "../../../img/openeye.svg";
 import { ReactComponent as ClosedEyeIcon } from "../../../img/closeeye.svg";
 import { ReactComponent as GoogleIcon } from "../../../img/google-icon.svg";
 import { auth } from "../../../firebase";
-import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import AuthProvider from "../../../auth_google";
-import { FirebaseError } from "firebase/app";
 
 interface IForms {
   email: string;
@@ -52,13 +51,6 @@ const FormLogin: FC<IProps> = ({ onClose }) => {
 
       navigate("/nannies");
     } catch (error) {
-      // if (AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
-      //   return;
-      // }
-      // if (AuthErrorCodes.EXPIRED_POPUP_REQUEST) {
-      //   return;
-      // }
-      console.log(error);
       toast.error("Invalid data. Sign in is failed. Please try again.");
     }
     resetForm();

@@ -8,7 +8,7 @@ import { selectUser, setUser } from "../../redux/authSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useDispatch } from "react-redux";
-import { clearState } from "../../redux/nanniesSlice";
+import { clearFavorites, clearState } from "../../redux/nanniesSlice";
 import { ReactComponent as IconAvatar } from "../../img/avatar.svg";
 import css from "./Header.module.css";
 
@@ -39,6 +39,7 @@ const Header = () => {
       .then(() => {
         dispatch(setUser(null));
         dispatch(clearState());
+        dispatch(clearFavorites());
         navigate("/");
       })
       .catch((error) => {
